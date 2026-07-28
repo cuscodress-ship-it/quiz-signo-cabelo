@@ -20,11 +20,11 @@ const APP_CONFIG = {
   PRODUCT_NAME: "Piave All In One",
 
   // Percentual de desconto exibido na tela final.
-  DISCOUNT_PERCENT: 60,
+  DISCOUNT_PERCENT: 10,
 
   // Preços exibidos (de/por). Mantidos como texto para não ter que lidar com formatação de moeda.
   PRICE_ORIGINAL: "119,90",
-  PRICE_FINAL: "48,00",
+  PRICE_FINAL: "107,91",
 
   // Minutos do cronômetro de urgência na tela final (reinicia a cada visita à tela).
   COUNTDOWN_MINUTES: 10,
