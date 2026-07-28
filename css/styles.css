@@ -463,12 +463,6 @@ h1.title {
   font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Symbols", var(--font-family);
 }
 
-.zodiac-symbol {
-  color: var(--pink);
-  font-variant-emoji: text;
-  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Symbols", var(--font-family);
-}
-
 /* ===================== Result screen ===================== */
 .result-name {
   font-size: clamp(34px, 7vw, 52px);

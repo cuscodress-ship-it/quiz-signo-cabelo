@@ -227,7 +227,7 @@
         ${LOGO_HTML}
         <div class="gift-badge">🎁</div>
         <h1 class="title">Parabéns!</h1>
-        <p class="sign-gift-tag">Esse é o presente para o signo de <span class="zodiac-symbol">${sign.symbol}</span> ${sign.name}</p>
+        <p class="sign-gift-tag">Esse é o presente para o signo de ${sign.name}</p>
         <div class="coupon">
           <div class="coupon-percent">${APP_CONFIG.DISCOUNT_PERCENT}% <span class="coupon-off">OFF</span></div>
           <p class="coupon-desc">no produto recomendado para o seu cabelo</p>
@@ -284,7 +284,7 @@
       .map(
         (s) => `
         <div class="sign-bank-item" data-id="${s.id}">
-          <div class="sign-name"><span class="zodiac-symbol">${s.symbol}</span> ${s.name}</div>
+          <div class="sign-name">${s.name}</div>
         </div>`
       )
       .join("");
