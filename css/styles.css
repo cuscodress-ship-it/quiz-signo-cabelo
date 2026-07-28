@@ -1,0 +1,771 @@
+/* ===================== Design tokens (identidade visual Piave Cosmetics) ===================== */
+:root {
+  /* Paleta extraída diretamente de piavecosmetics.com.br (schemes do tema Shopify) */
+  --cream: #fbf7f1;      /* fundo principal — "surface-warm" da Piave */
+  --coral: #f79883;      /* cor de destaque/promo da Piave (barra de anúncio, preço promocional) */
+  --coral-ink: #b3523c;  /* versão mais escura do coral, usada quando o texto fica direto sobre fundo claro (contraste de leitura) */
+  --mint: #cee6d2;       /* verde-água — cor do próprio produto */
+  --pale-yellow: #faeaa1; /* accent secundário (botão sobre fundo escuro) */
+  --pink: #d1477a;       /* cor dos símbolos dos signos (substitui o roxo padrão do emoji do sistema) */
+  --white: #ffffff;
+  --black: #1a1b18;      /* "tinta" quase preta usada pela Piave em texto/botões */
+
+  --text-primary: var(--black);
+  --text-secondary: rgba(26, 27, 24, 0.65);
+  --text-tertiary: rgba(26, 27, 24, 0.45);
+
+  --border-width: 2px;
+  --shadow-sm: 4px 4px 0px 0px var(--black);
+  --shadow-lg: 8px 8px 0px 0px var(--black);
+
+  /* Sombra "de trás" em verde-água — usada nos botões, pra não ficar tudo preto atrás de preto. */
+  --shadow-sm-mint: 4px 4px 0px 0px var(--mint);
+  --shadow-lg-mint: 8px 8px 0px 0px var(--mint);
+
+  --radius-lg: 12px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+
+  --ease-press: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+body.theme-dark {
+  --text-primary: #fbf7f1;
+  --text-secondary: rgba(251, 247, 241, 0.78);
+  --text-tertiary: rgba(250, 234, 161, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--cream);
+  background-image: radial-gradient(rgba(26, 27, 24, 0.08) 1.6px, transparent 1.6px);
+  background-size: 32px 32px;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background-color 0.3s var(--ease-press);
+}
+
+body.theme-dark {
+  background-color: var(--black);
+  background-image: none;
+}
+
+/* ===================== App shell ===================== */
+#app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: calc(16px + env(safe-area-inset-top, 0px)) 16px 0;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+  margin-bottom: 30px;
+}
+
+
+.progress-track {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  height: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  border: var(--border-width) solid var(--black);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-press);
+}
+
+.progress-track.visible {
+  opacity: 1;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--coral);
+  transition: width 0.5s var(--ease-press);
+}
+
+#screen-root {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 640px) {
+  #screen-root {
+    padding: 24px 32px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.screen {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: screen-in 0.4s var(--ease-press);
+}
+
+.screen.leaving {
+  animation: screen-out 0.2s ease-in forwards;
+}
+
+@keyframes screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes screen-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* ===================== Typography ===================== */
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 14px;
+}
+
+h1.title {
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 36px;
+  max-width: 420px;
+}
+
+.question-title {
+  font-size: clamp(22px, 4.4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 30px;
+  color: var(--text-primary);
+}
+
+/* ===================== Buttons ===================== */
+.btn {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  border: var(--border-width) solid var(--black);
+  border-radius: var(--radius-sm);
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-press), box-shadow 0.2s var(--ease-press);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  background: var(--black);
+  color: var(--white);
+  box-shadow: var(--shadow-lg-mint);
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: var(--shadow-sm-mint);
+}
+
+.btn-ghost {
+  background: var(--white);
+  color: var(--black);
+  box-shadow: var(--shadow-sm-mint);
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--mint);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px;
+}
+
+.btn-link:hover {
+  color: var(--text-secondary);
+}
+
+.btn-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* ===================== Option buttons (quiz) ===================== */
+/* Mobile-first: uma coluna por padrão; duas colunas a partir de telas maiores. */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .options-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+.option-btn {
+  font-family: inherit;
+  background: var(--white);
+  border: var(--border-width) solid var(--black);
+  color: var(--black);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm-mint);
+  transition: transform 0.15s var(--ease-press), box-shadow 0.15s var(--ease-press), background 0.15s;
+  position: relative;
+}
+
+.option-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--mint);
+}
+
+.option-btn.selected {
+  background: var(--mint);
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+/* ===================== Cards ===================== */
+.card {
+  background: var(--white);
+  border: var(--border-width) solid var(--black);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+}
+
+/* ===================== Loading screen ===================== */
+/* Spinner "tear": um nó central pulsante com 4 fios que se cruzam em 3D,
+   tecendo ao redor dele. Cor usa o coral da marca (em vez do âmbar original). */
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.spinner-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--coral);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px var(--coral), 0 0 40px rgba(247, 152, 131, 0.6);
+  animation: nodePulse 1.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+.thread {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(247, 152, 131, 0.8), transparent);
+  box-shadow: 0 0 10px rgba(247, 152, 131, 0.5);
+  transform-origin: center;
+}
+
+.t1 {
+  width: 100%;
+  height: 2px;
+  top: 30%;
+  left: 0;
+  animation: weave1 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.t2 {
+  width: 2px;
+  height: 100%;
+  top: 0;
+  left: 70%;
+  animation: weave2 2.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+.t3 {
+  width: 100%;
+  height: 2px;
+  bottom: 30%;
+  left: 0;
+  animation: weave3 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+}
+
+.t4 {
+  width: 2px;
+  height: 100%;
+  top: 0;
+  left: 30%;
+  animation: weave4 2.6s cubic-bezier(0.36, 0, 0.66, -0.56) infinite;
+}
+
+@keyframes nodePulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 20px var(--coral), 0 0 40px rgba(247, 152, 131, 0.6);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.4);
+    box-shadow: 0 0 30px var(--coral), 0 0 60px rgba(247, 152, 131, 0.8);
+  }
+}
+
+@keyframes weave1 {
+  0% { transform: translateY(0) rotateX(0deg) rotateZ(0deg); opacity: 0.8; }
+  50% { transform: translateY(40px) rotateX(60deg) rotateZ(20deg); opacity: 1; }
+  100% { transform: translateY(0) rotateX(0deg) rotateZ(0deg); opacity: 0.8; }
+}
+
+@keyframes weave2 {
+  0% { transform: translateX(0) rotateY(0deg) rotateZ(0deg); opacity: 0.8; }
+  50% { transform: translateX(-40px) rotateY(60deg) rotateZ(-20deg); opacity: 1; }
+  100% { transform: translateX(0) rotateY(0deg) rotateZ(0deg); opacity: 0.8; }
+}
+
+@keyframes weave3 {
+  0% { transform: translateY(0) rotateX(0deg) rotateZ(0deg); opacity: 0.8; }
+  50% { transform: translateY(-40px) rotateX(-60deg) rotateZ(15deg); opacity: 1; }
+  100% { transform: translateY(0) rotateX(0deg) rotateZ(0deg); opacity: 0.8; }
+}
+
+@keyframes weave4 {
+  0% { transform: translateX(0) rotateY(0deg) rotateZ(0deg); opacity: 0.8; }
+  50% { transform: translateX(40px) rotateY(-60deg) rotateZ(-15deg); opacity: 1; }
+  100% { transform: translateX(0) rotateY(0deg) rotateZ(0deg); opacity: 0.8; }
+}
+
+.loading-message {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-height: 28px;
+  transition: opacity 0.3s var(--ease-press);
+}
+
+/* ===================== Sign icon ===================== */
+.sign-icon-wrapper {
+  width: min(180px, 45vw);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 28px;
+  background: var(--white);
+  border: var(--border-width) solid var(--black);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 12px;
+}
+
+.sign-icon-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.constellation-line {
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 1;
+}
+
+.constellation-dot {
+  fill: var(--black);
+  opacity: 1;
+}
+
+/* Símbolo padrão da astrologia (caractere Unicode ♈-♓), forçado a usar a
+   apresentação de texto/símbolo (não o emoji colorido) via font-variant-emoji
+   + uma fonte de símbolos explícita, para a cor abaixo ser sempre respeitada. */
+.sign-glyph {
+  font-size: 46px;
+  font-weight: 800;
+  fill: var(--pink);
+  font-variant-emoji: text;
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Symbols", var(--font-family);
+}
+
+.zodiac-symbol {
+  color: var(--pink);
+  font-variant-emoji: text;
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Symbols", var(--font-family);
+}
+
+/* ===================== Result screen ===================== */
+.result-name {
+  font-size: clamp(34px, 7vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 18px;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--black);
+}
+
+.result-description {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 32px;
+  max-width: 440px;
+}
+
+/* ===================== Sign bank ===================== */
+/* Mobile-first: duas colunas por padrão; três colunas em telas maiores. */
+.sign-bank-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin: 8px 0 24px;
+}
+
+@media (min-width: 560px) {
+  .sign-bank-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+.sign-bank-item {
+  background: var(--white);
+  border: var(--border-width) solid var(--black);
+  border-radius: var(--radius-md);
+  padding: 18px 10px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm-mint);
+  transition: transform 0.15s var(--ease-press), box-shadow 0.15s var(--ease-press);
+}
+
+.sign-bank-item:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--mint);
+}
+
+.sign-bank-item .sign-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 6px;
+}
+
+.trait-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.trait-list li {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 10px 0;
+  border-bottom: var(--border-width) solid var(--black);
+  display: flex;
+  gap: 10px;
+}
+
+.trait-list li:last-child {
+  border-bottom: none;
+}
+
+.trait-list.positive li::before {
+  content: "✓";
+  font-weight: 800;
+  color: var(--black);
+}
+
+.trait-list.challenge li::before {
+  content: "×";
+  font-weight: 800;
+  color: var(--text-tertiary);
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  align-self: flex-start;
+  margin: 8px 0 10px;
+}
+
+/* ===================== Final / gift screen ===================== */
+.gift-badge {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+.sign-gift-tag {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 18px;
+  color: var(--text-primary);
+}
+
+.countdown-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 24px;
+  padding: 14px 26px;
+  background: var(--black);
+  border: var(--border-width) solid var(--black);
+  border-radius: var(--radius-md);
+  animation: countdown-pulse 1s ease-in-out infinite;
+}
+
+.countdown-label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--pale-yellow);
+  text-transform: uppercase;
+}
+
+.countdown-display {
+  font-size: clamp(30px, 7vw, 40px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--coral);
+}
+
+@keyframes countdown-pulse {
+  0%, 100% { box-shadow: var(--shadow-sm); }
+  50% { box-shadow: var(--shadow-lg); }
+}
+
+/* Cupom "descoberto": ticket com furos recortados nas laterais e borda
+   tracejada, como se tivesse acabado de ser revelado/destacado. */
+.coupon {
+  position: relative;
+  display: inline-block;
+  padding: 16px 34px;
+  background: var(--coral);
+  border: var(--border-width) dashed var(--black);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  margin: 18px 0 30px;
+}
+
+.coupon::before,
+.coupon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  background: var(--cream);
+  border: var(--border-width) solid var(--black);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.coupon::before {
+  left: -11px;
+}
+
+.coupon::after {
+  right: -11px;
+}
+
+.coupon-percent {
+  font-size: clamp(32px, 8vw, 44px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+
+.coupon-off {
+  font-size: 0.5em;
+  vertical-align: middle;
+}
+
+.coupon-desc {
+  margin: 6px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.product-title-tag {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin: 0 0 6px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto 24px;
+  display: block;
+}
+
+.product-name {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  color: var(--text-primary);
+}
+
+.product-description {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 18px;
+  max-width: 420px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 28px;
+}
+
+.price-original {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+}
+
+.price-final {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--coral-ink);
+}
+
+/* ===================== Footer / misc ===================== */
+.app-footer {
+  text-align: center;
+  padding: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+}
+
+.back-link {
+  align-self: flex-start;
+  margin-bottom: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translate(-50%, 16px);
+  background: var(--black);
+  border: var(--border-width) solid var(--white);
+  color: var(--white);
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+  transition: opacity 0.3s var(--ease-press), transform 0.3s var(--ease-press);
+  max-width: 90vw;
+  text-align: center;
+}
+
+#toast.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

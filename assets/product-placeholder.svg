@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 320" role="img" aria-label="Placeholder do produto Piave All In One">
+  <defs>
+    <linearGradient id="bottleBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#232a52" />
+      <stop offset="100%" stop-color="#171c3a" />
+    </linearGradient>
+    <linearGradient id="capGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8c992" />
+      <stop offset="100%" stop-color="#b7a6ff" />
+    </linearGradient>
+    <linearGradient id="labelGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.14)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.03)" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="110" cy="300" rx="60" ry="12" fill="#000" opacity="0.25" />
+
+  <rect x="70" y="30" width="80" height="40" rx="10" fill="url(#capGradient)" />
+  <rect x="86" y="10" width="48" height="26" rx="8" fill="url(#capGradient)" opacity="0.9" />
+
+  <path d="M60 70 C60 70 55 110 55 150 L55 270 C55 285 65 295 80 295 L140 295 C155 295 165 285 165 270 L165 150 C165 110 160 70 160 70 Z"
+        fill="url(#bottleBody)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+
+  <rect x="70" y="150" width="80" height="90" rx="14" fill="url(#labelGradient)" />
+  <text x="110" y="188" text-anchor="middle" font-family="-apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#f5f3ff">PIAVE</text>
+  <text x="110" y="208" text-anchor="middle" font-family="-apple-system, Segoe UI, sans-serif" font-size="10" letter-spacing="1.5" fill="rgba(245,243,255,0.65)">ALL IN ONE</text>
+
+  <path d="M60 90 C58 130 58 130 58 160" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="none" stroke-linecap="round" />
+</svg>
