@@ -23,8 +23,8 @@ const APP_CONFIG = {
   DISCOUNT_PERCENT: 20,
 
   // Preços exibidos (de/por). Mantidos como texto para não ter que lidar com formatação de moeda.
-  PRICE_ORIGINAL: "119,90",
-  PRICE_FINAL: "95,92",
+  PRICE_ORIGINAL: "119,00",
+  PRICE_FINAL: "95,20",
 
   // Minutos do cronômetro de urgência na tela final (reinicia a cada visita à tela).
   COUNTDOWN_MINUTES: 10,
