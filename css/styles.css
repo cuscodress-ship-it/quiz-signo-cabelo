@@ -469,8 +469,7 @@ h1.title {
   font-weight: 800;
   letter-spacing: -0.03em;
   margin: 0 0 18px;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--black);
+  color: var(--black);
 }
 
 .result-description {
