@@ -10,7 +10,7 @@ const APP_CONFIG = {
 
   // URL da página do produto Piave All In One (loja Shopify).
   // O cupom é aplicado via rota nativa do Shopify: /discount/CODIGO?redirect=/caminho-do-produto
-  PRODUCT_URL: "https://www.piavecosmetics.com.br/collections/styling/products/piave-cosmetics-all-in-one-leave-in",
+  PRODUCT_URL: "https://www.piavecosmetics.com.br/products/piave-cosmetics-all-in-one-leave-in",
 
   // Caminho da imagem do produto. Troque pelo arquivo real (ex: "assets/produto-piave.jpg")
   // quando estiver disponível.
