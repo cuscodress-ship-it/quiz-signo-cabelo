@@ -6,7 +6,7 @@
  */
 const APP_CONFIG = {
   // Código do cupom aplicado automaticamente.
-  COUPON_CODE: "SIGNO10",
+  COUPON_CODE: "SIGNOCAPILAR",
 
   // URL da página do produto Piave All In One (loja Shopify).
   // O cupom é aplicado via rota nativa do Shopify: /discount/CODIGO?redirect=/caminho-do-produto
